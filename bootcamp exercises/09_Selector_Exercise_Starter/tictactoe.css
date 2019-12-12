@@ -1,0 +1,18 @@
+h1 {
+  text-align: center;
+}
+#tictactoe {
+  margin: auto;
+}
+#tictactoe td {
+  width: 100px;
+  height: 100px;
+}
+#tictactoe .vertical {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+#tictactoe .horizontal {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}

@@ -1,0 +1,21 @@
+#images {
+  margin: 0;
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+}
+img {
+  width: 30%;
+  padding: 1% 1.66%;
+}
+h1 {
+  display: block;
+  font-family: Oswald;
+  text-transform: uppercase;
+  font-weight: 800;
+  width: 30%;
+  margin-left: 1.66%;
+  padding-bottom: 0.5%;
+  border-bottom: 2px solid lightgray;
+}

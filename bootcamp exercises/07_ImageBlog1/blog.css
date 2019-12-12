@@ -1,0 +1,29 @@
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  margin: 0 auto;
+  padding: 0 20%;
+}
+#blogcontainer {
+  border: 12px solid lightslategray;
+}
+.blogpost {
+  padding: 0 2%;
+}
+.divider {
+  width: 96%;
+  border-bottom: 1px solid lightgray;
+}
+.blogdate {
+  color: lightskyblue;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+}
+.blogtitle {
+  color: slategray;
+  font-weight: 600%;
+  font-size: 2rem;
+}
+.bloghighlight {
+  border-left: 4px solid lightslategray;
+  padding-left: 5px;
+}

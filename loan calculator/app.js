@@ -1,3 +1,17 @@
+// Listen for Form Repayment Months Input
+document.getElementById('repayYears').addEventListener('input', function() {
+  // Update Repayment in Months based on Years entered
+  const repayYears = document.getElementById('repayYears');
+  document.getElementById('repayMonths').value = parseFloat(repayYears.value) * 12;
+});
+
+// Listen for Form Repayment Years Input
+document.getElementById('repayMonths').addEventListener('input', function() {
+  // Update Repayment in Years based on Months entered
+  const repayMonths = document.getElementById('repayMonths');
+  document.getElementById('repayYears').value = parseFloat(repayMonths.value) / 12;
+});
+
 // Listen for Form Submit
 document.getElementById('loan-form').addEventListener('submit', function(e) {
   // Hide results
@@ -9,9 +23,6 @@ document.getElementById('loan-form').addEventListener('submit', function(e) {
   // Calculate Results
   setTimeout(calculateResults, 2000);
 
-  // Hide loading gif
-  document.getElementById('loading').style.display = 'none';
-
   e.preventDefault();
 });
 
@@ -22,14 +33,15 @@ function calculateResults() {
   // UI variables
   const amount = document.getElementById('amount');
   const interest = document.getElementById('interest');
-  const years = document.getElementById('years');
+  const repayYears = document.getElementById('repayYears');
+  const repayMonths = document.getElementById('repayMonths');
   const monthlyPayment = document.getElementById('monthly-payment');
   const totalPayment = document.getElementById('total-payment');
   const totalInterest = document.getElementById('total-interest');
 
   const principal = parseFloat(amount.value);
   const calculatedInterest = parseFloat(interest.value) / 100 / 12;
-  const calculatedPayments = parseFloat(years.value) * 12;
+  const calculatedPayments = parseFloat(repayYears.value) * 12 || parseFloat(repayMonths.value);
 
   // Compute monthly payment
   const calcX = Math.pow(1 + calculatedInterest, calculatedPayments);
@@ -42,6 +54,9 @@ function calculateResults() {
 
     // Show results
     document.getElementById('results').style.display = 'block';
+
+    // Hide loading gif
+    document.getElementById('loading').style.display = 'none';
   } else {
     // if number is not finite, user error
     console.log('Please check your numbers');
@@ -51,6 +66,12 @@ function calculateResults() {
 
 // Show Error
 function showError(error) {
+  // Hide results
+  document.getElementById('results').style.display = 'none';
+
+  // Hide loading gif
+  document.getElementById('loading').style.display = 'none';
+
   //Create div
   const errorDiv = document.createElement('div');
 

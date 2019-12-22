@@ -1,0 +1,12 @@
+.Pokecard {
+    background-color: white;
+    border: 5px solid orange;
+    width: 200px;
+    margin: 1% 2%;
+    padding: 1%;
+    text-align: center;
+}
+
+.Pokecard img {
+    width: 100%;
+}

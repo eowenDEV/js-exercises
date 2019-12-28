@@ -6,7 +6,7 @@ class CoinFlipper extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			currentFace: 0,
+			currentFace: null,
 			numFlips: 0,
 			numHeads: 0,
 			numTails: 0
@@ -36,7 +36,7 @@ class CoinFlipper extends Component {
 		return (
 			<div className="CoinFlipper">
 				<h1>Let's flip a coin!</h1>
-				<Coin coin={this.state.currentFace} />
+				{this.state.currentFace === null ? '' : <Coin coin={this.state.currentFace} />}
 				<button onClick={this.handleClick}>Flip Me!</button>
 				<p>{`Out of ${this.state.numFlips} flips, there has been ${this.state.numHeads} heads and ${this.state
 					.numTails} tails`}</p>

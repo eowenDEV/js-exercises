@@ -1,0 +1,9 @@
+.CoinFlipper {
+	display: flex;
+	align-items: center;
+	flex-flow: column;
+}
+
+.CoinFlipper button {
+	margin: 1em 0 0 0;
+}

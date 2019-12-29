@@ -44,5 +44,4 @@ class CoinFlipper extends Component {
 		);
 	}
 }
-
 export default CoinFlipper;

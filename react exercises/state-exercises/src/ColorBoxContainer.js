@@ -20,15 +20,11 @@ class ColorBoxContainer extends Component {
 			'pink',
 			'darkolivegreen',
 			'darkseagreen'
-		],
-		colorPalette2: [ '#29663d', '#7fa970', '#ced3c4', '#d8cce7', '#9791ae' ]
+		]
 	};
 	render() {
 		return (
 			<div className="ColorBoxContainer">
-				{/* {Array.from({ length: this.props.numBoxes }).map(() => (
-					<ColorBox colorPalette={this.props.colorPalette} />
-				))} */}
 				{Array.from({ length: this.props.numBoxes }).map(() => (
 					<ColorBox colorPalette={this.props.colorPalette} />
 				))}

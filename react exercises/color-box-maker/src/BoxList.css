@@ -1,0 +1,11 @@
+.BoxList {
+}
+
+.BoxList-boxes {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+.BoxList-boxes .Box {
+	margin: .5em 1em;
+}

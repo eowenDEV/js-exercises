@@ -1,4 +1,55 @@
+.ToDo {
+	margin: .5rem -2rem;
+	padding: .5rem;
+	/* border-top: 2px solid slategray; */
+	background: rgba(112, 128, 144, .8);
+	color: white;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.ToDo-task {
+	padding-left: 1.5em;
+}
+
 .completed {
 	color: lightgray;
 	text-decoration: line-through;
+}
+
+.ToDo-buttons {
+	padding-right: 1.5em;
+}
+
+.ToDo-buttons button {
+	border: none;
+	font-size: 1em;
+	margin: .5em;
+	background: none;
+	color: white;
+}
+
+.ToDo-edit-form {
+	display: flex;
+	flex-wrap: wrap;
+	padding-left: 1.5em;
+}
+
+.ToDo-edit-form input {
+	padding: .2em .5em;
+	font-size: 1.1rem;
+	border: none;
+	background: #faf5e4;
+	color: slategray;
+}
+
+.ToDo-edit-form button {
+	margin: .2em .5em;
+	padding: .3em .5em;
+	font-size: .9rem;
+	font-weight: 700;
+	border: none;
+	background: #faf5e4;
+	color: slategray;
 }

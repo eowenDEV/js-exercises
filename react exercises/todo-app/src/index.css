@@ -5,6 +5,7 @@
 }
 
 body {
+	background: linear-gradient(90deg, #c0ffb3, #2c7873);
 	font-family: 'Rubik', sans-serif;
 	height: 100%;
 }

@@ -35,36 +35,36 @@ class ToDo extends Component {
 	}
 	render() {
 		let result;
+		let classComplete = this.props.completed ? 'ToDo-task completed' : 'ToDo-task';
 		if (this.state.editMode) {
 			result = (
 				<div>
-					<form onSubmit={this.handleUpdate}>
+					<form className="ToDo-edit-form" onSubmit={this.handleUpdate}>
 						<input type="text" name="task" value={this.state.task} onChange={this.handleChange} />
-						<button>Save</button>
+						<button>SAVE</button>
 					</form>
 				</div>
 			);
 		} else {
 			result = (
 				<div>
-					<li
-						className={this.props.completed ? 'completed' : ''}
-						onClick={this.handleToggleCompletion}
-					>
+					<li className={classComplete} onClick={this.handleToggleCompletion}>
 						{this.props.taskTitle}
 					</li>
 				</div>
 			);
 		}
 		return (
-			<div>
+			<div className="ToDo">
 				{result}
-				<button name="editTask" onClick={this.toggleForm}>
-					Edit
-				</button>
-				<button name="deleteTask" onClick={this.handleRemove}>
-					Delete
-				</button>
+				<div className="ToDo-buttons">
+					<button name="editTask" onClick={this.toggleForm}>
+						<i class="fas fa-pen" />
+					</button>
+					<button name="deleteTask" onClick={this.handleRemove}>
+						<i class="fas fa-trash" />
+					</button>
+				</div>
 			</div>
 		);
 	}

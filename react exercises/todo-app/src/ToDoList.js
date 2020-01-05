@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ToDo from './ToDo';
 import NewToDoForm from './NewToDoForm';
+import './ToDoList.css';
 
 class ToDoList extends Component {
 	constructor(props) {
@@ -60,8 +61,11 @@ class ToDoList extends Component {
 			);
 		});
 		return (
-			<div>
-				<h1>To Do List</h1>
+			<div className="ToDoList">
+				<div className="ToDoList-top">
+					<h1>To Do List</h1>
+					<p>A Simple React App</p>
+				</div>
 				<ul>{newTaskList}</ul>
 				<NewToDoForm add={this.addTask} />
 			</div>

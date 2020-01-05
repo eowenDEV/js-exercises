@@ -11,6 +11,7 @@ class ToDoList extends Component {
 		this.addTask = this.addTask.bind(this);
 		this.removeTask = this.removeTask.bind(this);
 		this.updateTask = this.updateTask.bind(this);
+		this.toggleCompletion = this.toggleCompletion.bind(this);
 	}
 	addTask(newTask) {
 		this.setState({
@@ -23,7 +24,6 @@ class ToDoList extends Component {
 		});
 	}
 	updateTask(taskId, updatedTask) {
-		console.log('start update');
 		const updatedTaskList = this.state.taskList.map((todo) => {
 			if (todo.id === taskId) {
 				// update task
@@ -33,7 +33,17 @@ class ToDoList extends Component {
 		});
 		// update state
 		this.setState({ taskList: updatedTaskList });
-		console.log('updated');
+	}
+	toggleCompletion(taskId) {
+		const updatedTaskList = this.state.taskList.map((todo) => {
+			if (todo.id === taskId) {
+				// update task as complete
+				return { ...todo, completed: !todo.completed };
+			}
+			return todo;
+		});
+		// update state
+		this.setState({ taskList: updatedTaskList });
 	}
 	render() {
 		const newTaskList = this.state.taskList.map((todo) => {
@@ -42,8 +52,10 @@ class ToDoList extends Component {
 					key={todo.id}
 					id={todo.id}
 					taskTitle={todo.task}
-					remove={this.removeTask}
-					update={this.updateTask}
+					completed={todo.completed}
+					removeTask={this.removeTask}
+					updateTask={this.updateTask}
+					completeTask={this.toggleCompletion}
 				/>
 			);
 		});

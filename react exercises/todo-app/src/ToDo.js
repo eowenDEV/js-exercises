@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './ToDo.css';
 
 class ToDo extends Component {
 	constructor(props) {
@@ -8,9 +9,11 @@ class ToDo extends Component {
 		this.toggleForm = this.toggleForm.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 		this.handleUpdate = this.handleUpdate.bind(this);
+		this.handleToggleCompletion = this.handleToggleCompletion.bind(this);
 	}
 	handleRemove(evt) {
-		if (evt.target.name === 'deleteTask') this.props.remove(this.props.id);
+		// trigger on parent
+		this.props.removeTask(this.props.id);
 	}
 	toggleForm() {
 		this.setState({ editMode: !this.state.editMode });
@@ -18,13 +21,17 @@ class ToDo extends Component {
 	handleUpdate(evt) {
 		evt.preventDefault();
 		//send new task info to parent
-		this.props.update(this.props.id, this.state.task);
+		this.props.updateTask(this.props.id, this.state.task);
 		this.toggleForm();
 	}
 	handleChange(evt) {
 		this.setState({
 			[evt.target.name]: evt.target.value
 		});
+	}
+	handleToggleCompletion(evt) {
+		// trigger on parent
+		this.props.completeTask(this.props.id);
 	}
 	render() {
 		let result;
@@ -40,7 +47,12 @@ class ToDo extends Component {
 		} else {
 			result = (
 				<div>
-					<li>{this.props.taskTitle}</li>
+					<li
+						className={this.props.completed ? 'completed' : ''}
+						onClick={this.handleToggleCompletion}
+					>
+						{this.props.taskTitle}
+					</li>
 				</div>
 			);
 		}

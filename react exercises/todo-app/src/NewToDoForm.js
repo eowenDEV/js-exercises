@@ -16,7 +16,7 @@ class NewToDoForm extends Component {
 	handleSubmit(evt) {
 		evt.preventDefault();
 		// send state to parent
-		const newTask = { ...this.state, id: uuid() };
+		const newTask = { ...this.state, id: uuid(), completed: false };
 		this.props.add(newTask);
 		// reset state values
 		this.setState({ task: '' });

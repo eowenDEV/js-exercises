@@ -1,0 +1,31 @@
+.Board {
+	margin: 0 auto;
+	font-family: 'Fira Sans', sans-serif;
+}
+
+.Board-table {
+	margin: 0 auto;
+	border: 5px solid white;
+	background-color: #263238;
+}
+
+.Board-table td {
+	border: 1px solid #263238;
+}
+
+.Board form {
+	margin: 1em 0;
+}
+
+.Board button {
+	background-color: darkslategrey;
+	font-size: 1.5em;
+	font-family: 'Fira Sans', sans-serif;
+	padding: .2em 2em;
+	border: none;
+	color: white;
+}
+
+.Board button:hover {
+	background-color: rgba(47, 79, 79, .5);
+}

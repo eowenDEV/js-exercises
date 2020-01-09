@@ -1,0 +1,13 @@
+.Cell {
+	height: 100px;
+	width: 100px;
+	background-color: darkslategrey;
+}
+
+.Cell-lit {
+	background-color: lightgreen;
+}
+
+.Cell-lit:hover {
+	background-color: rgb(117, 236, 117);
+}

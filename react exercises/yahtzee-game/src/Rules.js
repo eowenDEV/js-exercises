@@ -9,27 +9,27 @@
  */
 
 class Rule {
-  constructor(params) {
-    // put all properties in params on instance
-    Object.assign(this, params);
-  }
+	constructor(params) {
+		// put all properties in params on instance
+		Object.assign(this, params);
+	}
 
-  sum(dice) {
-    // sum of all dice
-    return dice.reduce((prev, curr) => prev + curr);
-  }
+	sum(dice) {
+		// sum of all dice
+		return dice.reduce((prev, curr) => prev + curr);
+	}
 
-  freq(dice) {
-    // frequencies of dice values
-    const freqs = new Map();
-    for (let d of dice) freqs.set(d, (freqs.get(d) || 0) + 1);
-    return Array.from(freqs.values());
-  }
+	freq(dice) {
+		// frequencies of dice values
+		const freqs = new Map();
+		for (let d of dice) freqs.set(d, (freqs.get(d) || 0) + 1);
+		return Array.from(freqs.values());
+	}
 
-  count(dice, val) {
-    // # times val appears in dice
-    return dice.filter(d => d === val).length;
-  }
+	count(dice, val) {
+		// # times val appears in dice
+		return dice.filter((d) => d === val).length;
+	}
 }
 
 /** Given a sought-for val, return sum of dice of that val.
@@ -38,9 +38,10 @@ class Rule {
  */
 
 class TotalOneNumber extends Rule {
-  evalRoll = dice => {
-    return this.val * this.count(dice, this.val);
-  };
+	// evalRoll returns "sum of all ones, etc"
+	evalRoll = (dice) => {
+		return this.val * this.count(dice, this.val);
+	};
 }
 
 /** Given a required # of same dice, return sum of all dice.
@@ -49,42 +50,64 @@ class TotalOneNumber extends Rule {
  */
 
 class SumDistro extends Rule {
-  evalRoll = dice => {
-    // do any of the counts meet of exceed this distro?
-    return this.freq(dice).some(c => c >= this.count) ? this.sum(dice) : 0;
-  };
+	evalRoll = (dice) => {
+		// do any of the counts meet of exceed this distro? returns 0 if condition not met
+		return this.freq(dice).some((c) => c >= this.count) ? this.sum(dice) : 0;
+	};
 }
 
 /** Check if full house (3-of-kind and 2-of-kind) */
 
-class FullHouse {
-  // TODO
+class FullHouse extends Rule {
+	evalRoll = (dice) => {
+		const freqs = this.freq(dice);
+		return freqs.includes(3) && freqs.includes(2) ? this.score : 0;
+	};
 }
 
 /** Check for small straights. */
 
-class SmallStraight {
-  // TODO
+class SmallStraight extends Rule {
+	evalRoll = (dice) => {
+		const d = Array.from(new Set(dice)).sort();
+		// logic: unique set -> sorted array
+		// success if 1st and 3rd spots are 1&4, 2&5, 3&6
+		console.log(`smallstraight ${d}`);
+
+		if (d[0] === 1 && d[3] === 4) {
+			console.log('1&4');
+			return this.score;
+		}
+		if (d[0] === 2 && d[3] === 5) {
+			console.log('2&5');
+			return this.score;
+		}
+		if (d[0] === 3 && d[3] === 6) {
+			console.log('3&6');
+			return this.score;
+		}
+		return 0;
+	};
 }
 
 /** Check for large straights. */
 
 class LargeStraight extends Rule {
-  evalRoll = dice => {
-    const d = new Set(dice);
+	evalRoll = (dice) => {
+		const d = new Set(dice);
 
-    // large straight must be 5 different dice & only one can be a 1 or a 6
-    return d.size === 5 && (!d.has(1) || !d.has(6)) ? this.score : 0;
-  };
+		// large straight must be 5 different dice & only one can be a 1 or a 6
+		return d.size === 5 && (!d.has(1) || !d.has(6)) ? this.score : 0;
+	};
 }
 
 /** Check if all dice are same. */
 
 class Yahtzee extends Rule {
-  evalRoll = dice => {
-    // all dice must be the same
-    return this.freq(dice)[0] === 5 ? this.score : 0;
-  };
+	evalRoll = (dice) => {
+		// all dice must be the same
+		return this.freq(dice)[0] === 5 ? this.score : 0;
+	};
 }
 
 // ones, twos, etc score as sum of that value
@@ -100,30 +123,30 @@ const threeOfKind = new SumDistro({ count: 3 });
 const fourOfKind = new SumDistro({ count: 4 });
 
 // full house scores as flat 25
-const fullHouse = "TODO";
+const fullHouse = new FullHouse({ score: 25 });
 
 // small/large straights score as 30/40
-const smallStraight = "TODO";
+const smallStraight = new SmallStraight({ score: 30 });
 const largeStraight = new LargeStraight({ score: 40 });
 
 // yahtzee scores as 50
 const yahtzee = new Yahtzee({ score: 50 });
 
-// for chance, can view as some of all dice, requiring at least 0 of a kind
-const chance = new SumDistro({ count: 0 });
+// for chance, can view as sum of all dice, requiring at least 0 of a kind
+const chance = new SumDistro({ count: 0 }); // count 0 means SumDistro will return sum
 
 export {
-  ones,
-  twos,
-  threes,
-  fours,
-  fives,
-  sixes,
-  threeOfKind,
-  fourOfKind,
-  fullHouse,
-  smallStraight,
-  largeStraight,
-  yahtzee,
-  chance
+	ones,
+	twos,
+	threes,
+	fours,
+	fives,
+	sixes,
+	threeOfKind,
+	fourOfKind,
+	fullHouse,
+	smallStraight,
+	largeStraight,
+	yahtzee,
+	chance
 };

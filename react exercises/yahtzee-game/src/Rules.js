@@ -111,29 +111,44 @@ class Yahtzee extends Rule {
 }
 
 // ones, twos, etc score as sum of that value
-const ones = new TotalOneNumber({ val: 1 });
-const twos = new TotalOneNumber({ val: 2 });
-const threes = new TotalOneNumber({ val: 3 });
-const fours = new TotalOneNumber({ val: 4 });
-const fives = new TotalOneNumber({ val: 5 });
-const sixes = new TotalOneNumber({ val: 6 });
+const ones = new TotalOneNumber({ val: 1, description: '1 point per 1' });
+const twos = new TotalOneNumber({ val: 2, description: '2 points per 2' });
+const threes = new TotalOneNumber({ val: 3, description: '3 points per 3' });
+const fours = new TotalOneNumber({ val: 4, description: '4 points per 4' });
+const fives = new TotalOneNumber({ val: 5, description: '5 points per 5' });
+const sixes = new TotalOneNumber({ val: 6, description: '6 points per 6' });
 
 // three/four of kind score as sum of all dice
-const threeOfKind = new SumDistro({ count: 3 });
-const fourOfKind = new SumDistro({ count: 4 });
+const threeOfKind = new SumDistro({
+	count: 3,
+	description: 'Total dice points if at least 3 die faces match'
+});
+const fourOfKind = new SumDistro({
+	count: 4,
+	description: 'Total dice points if at least 4 die faces match'
+});
 
 // full house scores as flat 25
-const fullHouse = new FullHouse({ score: 25 });
+const fullHouse = new FullHouse({
+	score: 25,
+	description: '25 points (3 of a Kind and a pair)'
+});
 
 // small/large straights score as 30/40
-const smallStraight = new SmallStraight({ score: 30 });
-const largeStraight = new LargeStraight({ score: 40 });
+const smallStraight = new SmallStraight({
+	score: 30,
+	description: '30 points (4 consecutive faces)'
+});
+const largeStraight = new LargeStraight({
+	score: 40,
+	description: '30 points (5 consecutive faces)'
+});
 
 // yahtzee scores as 50
-const yahtzee = new Yahtzee({ score: 50 });
+const yahtzee = new Yahtzee({ score: 50, description: '50 point (5 of a Kind)' });
 
 // for chance, can view as sum of all dice, requiring at least 0 of a kind
-const chance = new SumDistro({ count: 0 }); // count 0 means SumDistro will return sum
+const chance = new SumDistro({ count: 0, description: 'Catch-all roll with total points of all dice' }); // count 0 means SumDistro will return sum
 
 export {
 	ones,

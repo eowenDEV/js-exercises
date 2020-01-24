@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Card from './Card.js';
+import './Deck.css';
 
 const API_BASE_URL = 'https://deckofcardsapi.com/api/deck';
 
 class Deck extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { deckID: null, drawnDeck: [] };
+		this.state = { deckID: null, drawnDeck: [], emptyDeck: false };
 		this.getCard = this.getCard.bind(this);
 	}
 	async componentDidMount() {
@@ -20,7 +21,9 @@ class Deck extends Component {
 			// make request with deck id
 			let getDeck = await axios.get(`${API_BASE_URL}/${this.state.deckID}/draw/`);
 
+			// check if cards are remaining
 			if (!getDeck.data.success) {
+				this.setState({ emptyDeck: true });
 				console.log(`success? ${getDeck.data.success}`);
 				throw new Error('No cards remaining');
 			}
@@ -40,15 +43,25 @@ class Deck extends Component {
 		}
 	}
 	render() {
-		//loop through drawn cards
+		// loop through drawn cards
 		let cards = this.state.drawnDeck.map((card) => {
 			return <Card imageURL={card.image} name={card.name} key={card.code} />;
 		});
+		// if empty deck, change GET CARD button
+		let cardState;
+		this.state.emptyDeck
+			? (cardState = <p>No Cards Remaining</p>)
+			: (cardState = (
+					<button className="Deck-btn" onClick={this.getCard}>
+						Get Card!
+					</button>
+				));
 		return (
 			<div className="Deck">
-				<h1>Card Dealer</h1>
-				<button onClick={this.getCard}>Get Card!</button>
-				{cards}
+				<h1 className="Deck-title">Card Dealer</h1>
+				<h3 className="Deck-title subtitle">A little demo made with React</h3>
+				{cardState}
+				<div className="Deck-cardstack">{cards}</div>
 			</div>
 		);
 	}

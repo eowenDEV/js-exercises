@@ -1,0 +1,77 @@
+@media only screen and (max-width: 600px) {
+	.DadJoke {
+		width: 100% !important;
+	}
+	.DadJoke-title {
+		font-size: 2rem !important;
+	}
+}
+
+.DadJoke {
+	margin: 0 auto;
+	width: 80%;
+	height: 80%;
+	display: flex;
+}
+
+.DadJoke-sidebar {
+	background: #a415eb;
+	width: 30%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.1);
+}
+
+.DadJoke-sidebar img {
+	width: 70%;
+}
+
+.DadJoke-title {
+	font-size: 3rem;
+	font-weight: 300;
+	margin: 2rem 1rem;
+	color: white;
+	letter-spacing: .5rem;
+}
+
+.DadJoke-title span {
+	font-weight: 700;
+	letter-spacing: 0;
+}
+
+.DadJoke-newjokes {
+	font-size: 1rem;
+	margin: 2rem;
+	padding: .5rem 1rem;
+	color: white;
+	background: linear-gradient(
+		140deg,
+		rgb(21, 235, 164) 0%,
+		rgb(21, 235, 164) 42%,
+		rgb(235, 21, 92) 44%,
+		rgb(235, 21, 92) 100%
+	);
+	border-radius: 10px;
+	border: none;
+	text-transform: uppercase;
+	letter-spacing: .1rem;
+	font-weight: 700;
+	box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.1);
+}
+
+.DadJoke-newjokes:hover {
+	color: darkslategrey;
+	cursor: pointer;
+}
+
+.DadJoke-jokelist {
+	background: white;
+	width: 70%;
+	height: 90%;
+	align-self: center;
+	overflow: scroll;
+	box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.1);
+}

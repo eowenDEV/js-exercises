@@ -1,0 +1,55 @@
+@media only screen and (max-width: 600px) {
+	.Joke-buttons {
+		width: 40% !important;
+	}
+}
+
+.Joke {
+	text-align: left;
+	border-bottom: 1px solid darkslategrey;
+	color: darkslategrey;
+	padding: .5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.Joke-buttons {
+	width: 20%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.Joke-votes {
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 50%;
+	border: 3px red solid;
+	font-size: 20px;
+	font-weight: 300;
+	text-align: center;
+	box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.1);
+}
+
+.Joke-text {
+	width: 70%;
+	font-size: 1.2rem;
+	color: darkslategrey;
+	padding: 0 5%;
+}
+
+.fa-arrow-up,
+.fa-arrow-down {
+	font-size: 1.5rem;
+	margin: 0 .5rem;
+	cursor: pointer;
+}
+
+.Joke-emoji {
+	font-size: 2rem;
+	margin-left: auto;
+	border-radius: 50%;
+	box-shadow: 0 10px 38px rgba(0, 0, 0, 0.2), 0 10px 12px rgba(0, 0, 0, 0.1);
+}
